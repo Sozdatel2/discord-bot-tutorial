@@ -8,7 +8,7 @@ class Moderation(commands.Cog):
         self.bot = bot
         print('Module {} is loaded'.format(self.__class__.__name__))
 
-    @commands.command()
+    @bot.command()
     @commands.has_permissions(ban_members=True)
     async def unban(self, ctx, userid: int, reason='not specified'):
         user = await self.bot.fetch_user(userid)
@@ -25,7 +25,7 @@ class Moderation(commands.Cog):
             await ctx.message.delete()
             await ctx.send("Not enough permissions to use this command", delete_after=5)
 
-    @commands.command()
+    @bot.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, user: discord.Member = None, *, reason='not specified'):
         guild = ctx.guild
